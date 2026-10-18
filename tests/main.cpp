@@ -1,4 +1,5 @@
-#include "Convert.h"
+#include "Note.h"
+#include "Chord.h"
 
 #include <iostream>
 #include <string>

@@ -1,48 +1,10 @@
-#include "Convert.h"
+#include "Chord.h"
 
-#include <algorithm>
 #include <string>
 #include <vector>
 #include <unordered_map>
 
 namespace cnv{
-    const std::unordered_map<std::string, int> Note::midi_vals = { 
-        {"C", 60},
-        {"C#", 61},
-        {"Db", 61},
-        {"D", 62},
-        {"D#", 63},
-        {"Eb", 63},
-        {"E", 64},
-        {"F", 65},
-        {"F#", 66},
-        {"Gb", 66},
-        {"G", 67},
-        {"G#", 68},
-        {"Ab", 68},
-        {"A", 69},
-        {"A#", 70},
-        {"Bb", 70},
-        {"B", 71}
-    };
-
-
-    Note::Note(std::string no, int oct){
-        note = no;
-        value = midivals[note];
-        octave = oct;
-
-        int difference = octave - 4;
-        value = value + (difference * 12);
-    }
-
-    std::string Note::get_note(){
-        return this.note;
-    }
-
-    int Note::get_value(){
-        return this.value;
-    }
 
     const std::unordered_map<std::string, int> Chord::chromatic_vals = {
         {"C", 0},
@@ -72,7 +34,7 @@ namespace cnv{
         {3, "D#"},
         {3, "Eb"},
         {4, "E"},
-        {5, "F"}
+        {5, "F"},
         {6, "F#"},
         {6, "Gb"},
         {7, "G"},
@@ -84,12 +46,12 @@ namespace cnv{
         {11, "B"}
     };
 
-    Chord::chord_formula = {
+    const std::unordered_map<std::string, int > Chord::chord_formula = {
         {"Major", {0, 4, 7}}
     };
 
     Chord::Chord(std::string cho, int oct){
-        formula = chordFormula[oct];
+        formula = chord_formula[oct];
         chord = cho;
         octave = oct;
 
