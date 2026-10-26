@@ -1,0 +1,8 @@
+{
+    "clangd.arguments": [
+        "--query-driver=/usr/bin/clang++"
+    ],
+    "files.associations": {
+        "*.h": "cpp"
+    }
+}
