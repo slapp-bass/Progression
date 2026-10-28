@@ -6,6 +6,7 @@
 
 namespace cnv{
 
+    // chromatic values for each note
     const std::unordered_map<std::string, int> Chord::chromatic_vals = {
         {"C", 0},
         {"C#", 1},
@@ -26,6 +27,7 @@ namespace cnv{
         {"B", 11}
     };
     
+    // opposite of the chromatic value map, int to string
     const std::unordered_map<int, std::string> Chord::note_vals = {
         {0, "C"},
         {1, "C#"},
@@ -46,24 +48,25 @@ namespace cnv{
         {11, "B"}
     };
 
-    const std::unordered_map<std::string, int > Chord::chord_formula = {
+    // chord formula map
+    const std::unordered_map<std::string, std::vector<int> > Chord::chord_formula = {
         {"Major", {0, 4, 7}}
     };
 
     Chord::Chord(std::string cho, int oct){
-        formula = chord_formula[oct];
+        formula = chord_formula.at(cho);
         chord = cho;
         octave = oct;
 
-        notes = this.get_note_vals();
+        notes = this->get_note_vals();
     }
 
     std::vector<Note> Chord::get_note_vals(){
-        std::vector<int> notes;
-        std::string root(this.chord, 0, this.chord.std::find_first_of(" "));
-        int chrom_val = Chord::chromatic_vals[root];
-        for(int i = 0; i < formula.size(); i++){
-            Note note = Note(Chord::note_vals[(chrom_val + formula[i]) % 12], this.octave);
+        std::vector<Note> notes;
+        std::string root(this->chord, 0, this->chord.find_first_of(" "));
+        int chrom_val = Chord::chromatic_vals.at(root);
+        for(auto it = formula.begin(); it != formula.end(); ++it){
+            Note note = Note(Chord::note_vals.at((chrom_val + *it) % 12), this->octave);
             notes.push_back(note);
         }
 
@@ -71,19 +74,19 @@ namespace cnv{
     }
 
     std::string Chord::get_chord(){
-        return this.chord;
+        return this->chord;
     }
 
     std::vector<int> Chord::get_formula(){
-        return this.formula;
+        return this->formula;
     }
 
-    std::vector<int> Chord::get_notes(){
-        return this.notes;
+    std::vector<Note> Chord::get_notes(){
+        return this->notes;
     }
 
     int Chord::get_octave(){
-        return this.octave;
+        return this->octave;
     }
 
 }

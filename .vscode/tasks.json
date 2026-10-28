@@ -12,9 +12,10 @@
                 "-Wextra",
                 "-g",
                 "-I${workspaceFolder}/include",
-                "${workspaceFolder}/*.cpp",
+                "-I${workspaceFolder}/include/midi",
                 "${workspaceFolder}/src/*.cpp",
                 "${workspaceFolder}/src/midi/*.cpp",
+                "${workspaceFolder}/tests/*.cpp",
                 "-o",
                 "${workspaceFolder}/main"
             ],

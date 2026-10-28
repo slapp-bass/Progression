@@ -9,25 +9,33 @@
 namespace cnv{
 class Chord {
         private:
+            // conversion maps for chords and notes
             static const std::unordered_map<std::string, std::vector<int>> chord_formula;
             static const std::unordered_map<int, std::string> note_vals;
             static const std::unordered_map<std::string, int> chromatic_vals;
+
+            // instance variables
             std::vector<int> formula;
             std::string chord;
             int octave;
             std::vector<Note> notes;
 
-            std::vector<int> get_note_vals();
+            // private method
+            std::vector<Note> get_note_vals();
 
         public:
+            // non-parameterized constructor
+            Chord();
+            // parameterized constructor
             Chord(std::string cho, int oct);
 
+            // getters
             std::string get_chord();
             std::vector<int> get_formula();
-            std::vector<int> get_notes();
+            std::vector<Note> get_notes();
             int get_octave();
 
-
+            // create a midi track 
             void create_midfile_chord(int track, int start_time, int channel, int velocity, int end_time);
 };
 }
