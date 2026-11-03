@@ -14,6 +14,8 @@ namespace cnv {
             std::string note;
             int value;
             int octave;
+
+            std::string output;
         
         public:
             // non-parameterized constructor
@@ -25,6 +27,9 @@ namespace cnv {
             std::string get_note();
             int get_value();
             int get_octave();
+
+            // c++ verstion of toString()/str/repr. have to call in order to see
+            std::string get_output();
     };
 }
 

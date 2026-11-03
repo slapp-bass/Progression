@@ -80,4 +80,19 @@ namespace cnv {
     int Note::get_octave(){
         return this->octave;
     }
+
+    /*
+    scuffed toString/str method
+    
+    cnv::Note note = Note();
+    std::cout << note.get_output() << std::endl;
+    -> C4 with value 60
+
+    cnv::Note note = Note("A", 3);
+    std::cout << note.get_output() << std::endl;
+    -> A3 with value 57
+    */
+    std::string Note::get_output(){
+        return this->note + std::to_string(this->octave) + " with value " + std::to_string(this->value);
+    }
 }

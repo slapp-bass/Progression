@@ -11,7 +11,11 @@ int main(){
 
     std::vector<std::string> notes = {"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 
-    // cnv::Note temp = cnv::Note();
+    cnv::Note temp = cnv::Note();
+    std::cout << temp.get_output() << std::endl;
+
+    cnv::Note note = cnv::Note("A", 3);
+    std::cout << note.get_output() << std::endl;
     // std::cout << temp.get_note() << std::endl;
     // std::cout << temp.get_value() << std::endl;
     // std::cout << temp.get_octave() << std::endl;
@@ -26,10 +30,10 @@ int main(){
     //     }
     // }
     
-    cnv::Chord chord = cnv::Chord(sampleC, 4);
-    std::vector<int> formula = chord.get_formula();
-    for(auto it = formula.begin(); it != formula.end(); ++it){
-        std::cout << *it << std::endl;
-    }
+    // cnv::Chord chord = cnv::Chord(sampleC, 4);
+    // std::vector<int> formula = chord.get_formula();
+    // for(auto it = formula.begin(); it != formula.end(); ++it){
+    //     std::cout << *it << std::endl;
+    // }
     return 0;
 }
