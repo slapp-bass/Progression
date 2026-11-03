@@ -4,7 +4,7 @@
 #include <unordered_map>
 
 namespace cnv {
-    // note conversions at the 4th octave (C4 is middle C, 60)
+    // note conversions at the 4th octave (C4 is middle C, 60)t
     const std::unordered_map<std::string, int> Note::midi_vals = { 
         {"C", 60},
         {"C#", 61},

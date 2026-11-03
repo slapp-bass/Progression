@@ -15,8 +15,9 @@ class Chord {
             static const std::unordered_map<std::string, int> chromatic_vals;
 
             // instance variables
+            std::string chord_type;
             std::vector<int> formula;
-            std::string chord;
+            std::string root;
             int octave;
             std::vector<Note> notes;
 
@@ -30,7 +31,7 @@ class Chord {
             Chord(std::string cho, int oct);
 
             // getters
-            std::string get_chord();
+            std::string get_chord_type();
             std::vector<int> get_formula();
             std::vector<Note> get_notes();
             int get_octave();

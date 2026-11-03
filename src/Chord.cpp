@@ -50,12 +50,24 @@ namespace cnv{
 
     // chord formula map
     const std::unordered_map<std::string, std::vector<int> > Chord::chord_formula = {
-        {"Major", {0, 4, 7}}
+        {"Major", {0, 4, 7}},
     };
 
+    Chord::Chord(){
+        root = "C";
+        chord_type = "Major";
+        formula = chord_formula.at(chord_type);
+
+        octave = 4;
+        notes = this->get_note_vals();
+    }
+
     Chord::Chord(std::string cho, int oct){
-        formula = chord_formula.at(cho);
-        chord = cho;
+        std::string type(cho, cho.find_first_of(" ") + 1, cho.size() - cho.find_first_of(" "));
+        chord_type = type;
+        formula = chord_formula.at(chord_type);
+        std::string r(cho, 0, cho.find_first_of(" "));
+        root = r;
         octave = oct;
 
         notes = this->get_note_vals();
@@ -63,8 +75,7 @@ namespace cnv{
 
     std::vector<Note> Chord::get_note_vals(){
         std::vector<Note> notes;
-        std::string root(this->chord, 0, this->chord.find_first_of(" "));
-        int chrom_val = Chord::chromatic_vals.at(root);
+        int chrom_val = Chord::chromatic_vals.at(this->root);
         for(auto it = formula.begin(); it != formula.end(); ++it){
             Note note = Note(Chord::note_vals.at((chrom_val + *it) % 12), this->octave);
             notes.push_back(note);
@@ -73,8 +84,8 @@ namespace cnv{
         return notes;
     }
 
-    std::string Chord::get_chord(){
-        return this->chord;
+    std::string Chord::get_chord_type(){
+        return this->chord_type;
     }
 
     std::vector<int> Chord::get_formula(){
