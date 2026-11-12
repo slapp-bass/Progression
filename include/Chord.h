@@ -35,10 +35,7 @@ class Chord {
             std::vector<int> get_formula();
             std::vector<Note> get_notes();
             int get_octave();
-
-            // create a midi track 
-            void create_midfile_chord(int track, int start_time, int channel, int velocity, int end_time);
-};
+    };
 }
 
 #endif
