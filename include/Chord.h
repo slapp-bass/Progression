@@ -11,7 +11,7 @@ class Chord {
         private:
             // conversion maps for chords and notes
             static const std::unordered_map<std::string, std::vector<int>> chord_formula;
-            static const std::unordered_map<int, std::string> note_vals;
+            static const std::unordered_map<int, std::vector<std::string>> note_vals;
             static const std::unordered_map<std::string, int> chromatic_vals;
 
             // instance variables

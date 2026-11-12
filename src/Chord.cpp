@@ -28,24 +28,19 @@ namespace cnv{
     };
     
     // opposite of the chromatic value map, int to string
-    const std::unordered_map<int, std::string> Chord::note_vals = {
-        {0, "C"},
-        {1, "C#"},
-        {1, "Db"},
-        {2, "D"},
-        {3, "D#"},
-        {3, "Eb"},
-        {4, "E"},
-        {5, "F"},
-        {6, "F#"},
-        {6, "Gb"},
-        {7, "G"},
-        {8, "G#"},
-        {8, "Ab"},
-        {9, "A"},
-        {10, "A#"},
-        {10, "Bb"},
-        {11, "B"}
+    const std::unordered_map<int, std::vector<std::string> > Chord::note_vals = {
+        {0, {"C"}},
+        {1, {"C#", "Db"}},
+        {2, {"D"}},
+        {3, {"D#", "Eb"}},
+        {4, {"E"}},
+        {5, {"F"}},
+        {6, {"F#", "Gb"}},
+        {7, {"G"}},
+        {8, {"G#", "Ab"}},
+        {9, {"A"}},
+        {10, {"A#", "Bb"}},
+        {11, {"B"}}
     };
 
     // chord formula map
@@ -76,9 +71,26 @@ namespace cnv{
     std::vector<Note> Chord::get_note_vals(){
         std::vector<Note> notes;
         int chrom_val = Chord::chromatic_vals.at(this->root);
+        int prev_chrom = chrom_val;
+        int note_oct = this->octave;
+        bool is_flat = false;
+
+        if(this->root.find_first_of("b") != std::string::npos){
+            is_flat = true;
+        }
+
         for(auto it = formula.begin(); it != formula.end(); ++it){
-            Note note = Note(Chord::note_vals.at((chrom_val + *it) % 12), this->octave);
+            if ((chrom_val + *it) % 12 < prev_chrom){
+                note_oct += 1;
+            }
+            prev_chrom = (chrom_val + *it) % 12;
+            std::string note_val = Chord::note_vals.at(prev_chrom)[0];
+            if(is_flat && Chord::note_vals.at(prev_chrom).size() > 1){
+                note_val = Chord::note_vals.at(prev_chrom)[1];
+            }
+            Note note = Note(note_val, note_oct);
             notes.push_back(note);
+            
         }
 
         return notes;
