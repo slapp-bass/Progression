@@ -1,20 +1,25 @@
-#ifndef _MIDICONVERT_h_
-#define _MIDICONVERT_h_
+#ifndef _MIDICONVERT_H_
+#define _MIDICONVERT_H_
 
 #include "midifile.h"
-#include "string"
 #include "Chord.h"
 #include "Note.h"
+#include <vector>
+#include "Instruments.h"
 
 namespace cnv{
     class MidiConvert {
         private:
         smf::MidiFile midifile;
         int timePos;
+        int tpq;
+        int metatrack;
+        double tempo;
+        std::vector<cnv::Instruments> instrument_tracks;
 
         public:
         MidiConvert();
-        MidiConvert(int tpq, int tempoInit);
+        MidiConvert(int tpq, double tempoInit);
 
         void makeChord(cnv::Chord chord, int quarterNotes);
         void makeNote(cnv::Note note, int quarterNotes);

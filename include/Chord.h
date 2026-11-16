@@ -7,7 +7,7 @@
 #include <unordered_map>
 
 namespace cnv{
-class Chord {
+    class Chord {
         private:
             // conversion maps for chords and notes
             static const std::unordered_map<std::string, std::vector<int>> chord_formula;
