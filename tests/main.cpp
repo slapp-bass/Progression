@@ -6,8 +6,8 @@
 #include <vector>
 
 int main(){
-    std::string sampleN = "G";
-    std::string sampleC = "C Major";
+    // std::string sampleN = "G";
+    // std::string sampleC = "C Major";
 
     // std::vector<std::string> notes = {"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 
@@ -30,28 +30,28 @@ int main(){
     //     }
     // }
     
-    cnv::Chord chord = cnv::Chord("Bb Major", 4);
-    std::vector<cnv::Note> notes = chord.get_notes();
-    for(auto it = notes.begin(); it != notes.end(); ++it){
-        std::cout << it->get_output() << std::endl;
-    }
-    std::cout<< "next chord" << std::endl;
-    cnv::Chord chord2 = cnv::Chord("G# Major", 2);
-    std::vector<cnv::Note> notes2 = chord2.get_notes();
-    for(auto it = notes2.begin(); it != notes2.end(); ++it){
-        std::cout << it->get_output() << std::endl;
-    }
-    std::cout<< "next chord" << std::endl;
-    cnv::Chord chord3 = cnv::Chord("F# Major", 5);
-    std::vector<cnv::Note> notes3 = chord3.get_notes();
-    for(auto it = notes3.begin(); it != notes3.end(); ++it){
-        std::cout << it->get_output() << std::endl;
-    }
-    std::cout<< "next chord" << std::endl;
-    cnv::Chord chord4 = cnv::Chord("Gb Major", 5);
-    std::vector<cnv::Note> notes4 = chord4.get_notes();
-    for(auto it = notes4.begin(); it != notes4.end(); ++it){
-        std::cout << it->get_output() << std::endl;
-    }
+    // cnv::Chord chord = cnv::Chord("Bb Major", 4);
+    // std::vector<cnv::Note> notes = chord.get_notes();
+    // for(auto it = notes.begin(); it != notes.end(); ++it){
+    //     std::cout << it->get_output() << std::endl;
+    // }
+    // std::cout<< "next chord" << std::endl;
+    // cnv::Chord chord2 = cnv::Chord("G# Major", 2);
+    // std::vector<cnv::Note> notes2 = chord2.get_notes();
+    // for(auto it = notes2.begin(); it != notes2.end(); ++it){
+    //     std::cout << it->get_output() << std::endl;
+    // }
+    // std::cout<< "next chord" << std::endl;
+    // cnv::Chord chord3 = cnv::Chord("F# Major", 5);
+    // std::vector<cnv::Note> notes3 = chord3.get_notes();
+    // for(auto it = notes3.begin(); it != notes3.end(); ++it){
+    //     std::cout << it->get_output() << std::endl;
+    // }
+    // std::cout<< "next chord" << std::endl;
+    // cnv::Chord chord4 = cnv::Chord("Gb Major", 5);
+    // std::vector<cnv::Note> notes4 = chord4.get_notes();
+    // for(auto it = notes4.begin(); it != notes4.end(); ++it){
+    //     std::cout << it->get_output() << std::endl;
+    // }
     return 0;
 }
